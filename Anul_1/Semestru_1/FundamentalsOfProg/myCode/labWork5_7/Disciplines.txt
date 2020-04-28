@@ -1,0 +1,5 @@
+1 Mathematical Analysis
+2 Fundamentals of Programming
+3 Algebra
+4 Computational Logic
+5 Calculus System Architecture

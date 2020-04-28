@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd $1 2> dump.txt 
+if [ $? -ne 0 ] ;then
+	echo No directory with that name
+	rm dump.txt
+	exit 1
+fi
+ls -Rl |  grep "\(^.\{4\}-\{3\}\)" | tr -s " " | cut -d' ' -f9 | while read file; do echo $file >> text.txt; chmod 757 $file; done
+

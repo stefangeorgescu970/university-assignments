@@ -1,0 +1,2 @@
+Directory1:/Users/Stefan/Documents/Facultate/myUniCode/Anul_2/Semestru_1/progr3/project/Resources
+Directory2:/Users/Stefan/Documents/Facultate/myUniCode/Anul_2/Semestru_1/webApp/test1Prep

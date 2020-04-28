@@ -1,0 +1,73 @@
+
+(defun subarbst(l nr)
+  (cond
+    ( (= nr 0) nil)
+    ( (atom l) l)
+    ( ( numberp (car l)) (cons (car l) (subarbst (cdr l) nr)))
+    ( (and (= nr 1) (= (cadr l) 0)) (list (car l) (cadr l))) 
+    ( T (cons (car l) (subarbst (cdr l) (+ (car (cdr l)) (- nr 1)))))
+   )
+) 
+
+(defun subarbdr(l nr)
+  (cond 
+   ( (= nr 1) (subarbst l nr))
+   ( (atom l) l)
+   ( T (subarbdr (cddr l) (+ (cadr l) (- nr 1))))
+  )
+)
+
+(defun transf(l)
+  (cond 
+  ( (null l) nil)
+  ( (= 0 (cadr l)) (list (car l)))
+  ( (= 1 (cadr l)) (list (car l) (transf (subarbst (cddr l) '1))))
+  ( (= 2 (cadr l)) (list (car l)
+                       (transf (subarbst (cddr l) '1))
+                       (transf (subarbdr (cddr l) '2)) ))
+  )
+)
+
+(defun inorder(l)
+  (cond
+   ( (null l) nil)
+   ( (null (cadr l)) (list (car l)))
+   ( (null (caddr l)) (append (inorder (cadr l)) (list (car l))))
+   ( T (append (inorder (cadr l)) (append (list (car l)) (inorder (caddr l)))))
+  )
+)
+
+(defun getNodesOnLevel(l level current)
+  (cond
+   ( (null l) nil)
+   ( (= level current) (list (car l)))
+   ( (null (cadr l)) nil)
+   ( (null (caddr l)) (getNodesOnLevel (cadr l) level (+ current 1)))
+   ( T (append (getNodesOnLevel (cadr l) level (+ current 1)) (getNodesOnLevel (caddr l) level (+ current 1))))
+  )
+)
+
+
+(defun getMaxRowH(l currentL currentMax maxLevel)
+  (setq currentR (getNodesOnLevel l currentL 0))
+  (cond 
+   ( (null currentR) (cons currentMax maxLevel))
+   ( (< (length currentR) (length currentMax)) (getMaxRowH l (+ currentL 1) currentMax maxLevel))
+   ( T (getMaxRowH l (+ currentL 1) currentR currentL))
+  )
+)
+
+(defun getMaxRow(l)
+  (getMaxRowH l 0 'nil 'nil)
+)
+
+(defun pathToNode(l node path)
+  (cond
+   ( (null l) nil)
+   ( ( eq node (car l)) (append path (list (car l))))
+   ( (null (cadr l)) nil )
+   ( (null (caddr l)) (pathToNode (cadr l) node (append path (list (car l)))))
+   ( (null (pathToNode (cadr l) node (append path (list (car l))))) (pathToNode (caddr l) node (append path (list (car l)))))
+   ( T  (pathToNode (cadr l) node (append path (list (car l)))))
+  )
+)

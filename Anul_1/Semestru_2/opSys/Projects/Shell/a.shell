@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ $(($#%2)) -ne 0 ]; then
+	echo Please enter the parameters correctly.
+	exit 1
+fi
+
+while [ $# -ne 0 ]
+do
+	echo $1
+	echo $2
+	var=`cat $1 | wc -w `
+	if [ $var -lt $2 ] ; then
+                echo Not enough words in file.
+        else
+		cat $1 | cut -d' ' -f$2
+	fi	
+	shift 2
+done

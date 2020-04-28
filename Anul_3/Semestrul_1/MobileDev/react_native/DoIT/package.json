@@ -1,0 +1,28 @@
+{
+  "name": "DoIT",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "16.6.0-alpha.8af6728",
+    "react-native": "0.57.3",
+    "react-native-button": "^2.3.0",
+    "react-native-modal-dropdown": "^0.6.2",
+    "react-native-modalbox": "^1.6.0",
+    "react-native-swipeout": "^2.3.6",
+    "react-native-tableview": "^2.4.0",
+    "react-navigation": "^2.18.2"
+  },
+  "devDependencies": {
+    "babel-jest": "23.6.0",
+    "jest": "23.6.0",
+    "metro-react-native-babel-preset": "0.48.1",
+    "react-test-renderer": "16.6.0-alpha.8af6728"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

@@ -1,0 +1,7 @@
+(defun listHasAtom(list atom)
+  (cond 
+   ((null list) nil)
+   ((and (atom (car list)) (eq atom (car list))) t )
+   (T (listHasAtom (cdr list) atom))
+  )
+)

@@ -1,0 +1,28 @@
+<h1>{{title}}</h1>
+
+<div>
+  <input id="priceCheckBox" type="checkbox" />
+  <label> price less than </label>
+  <input #price/>
+</div>
+
+
+<div>
+  <input id="cuisineCheckBox" type="checkbox" />
+  <label> cuisine </label>
+  <select [(ngModel)] = "selectedCuisine">
+    <option *ngFor="let cuisine of cuisines" [value] = "cuisine">{{cuisine}}</option>
+  </select>
+</div>
+
+<div>
+  <button (click)="showResults(price.value)">Filter</button>
+</div>
+
+<div *ngIf="isListViewVisible">
+  <ol class="pizzas">
+    <li *ngFor="let pizza of pizzas"  >
+      {{pizza.name}}
+    </li>
+  </ol>
+</div>

@@ -1,0 +1,66 @@
+(defun product(x)
+  (cond 
+   ( (numberp x) x)
+   ( (atom x) 1)
+   (T (apply '* (mapcar 'product x)))
+   )
+)
+
+(defun checkForAtom(l atom)
+  (cond
+   ( (and (atom l) ) (eq l atom) )
+   ( T (eval (cons 'or (mapcar  #'(lambda (arg) (checkForAtom arg atom)) l) ))) 
+   )
+)
+
+(defun sum(l)
+  (cond
+   ( (numberp l) l)
+   ( (atom l) 0)
+   (T (apply '+ (mapcar 'sum l)))
+   )
+)
+
+(defun replaceElemWithList(l elem lr)
+  (cond
+   ( (and (atom l) (eq l elem) ) lr)
+   ( (atom l) (list l))
+   ( (numberp l) (list l))
+   (T (apply 'append (mapcar #'(lambda (arg) (replaceElemWithList arg elem lr)) l)))
+  )
+)
+
+(defun numberOfNodesH(arb level current)
+  (cond
+   ((and (atom arb) (eq level current)) 1)
+   ( (atom arb) 0)
+   (T (apply '+ (mapcar #'(lambda (arg) (numberOfNodesH arg level (+ current 1)) ) arb )))
+   )
+)
+
+(defun numberOfNodes (arb level) (numberOfNodesH arb level -1))
+
+(defun depthH(list current)
+  (cond
+   ( (atom list) current)
+   ( (numberp list) current)
+   ( T (apply 'max (mapcar #'(lambda (arg) (depthH arg (+ current 1))) list )))
+   )
+)
+
+(defun depth(list) (depthH list -1))
+
+(defun myreverse(list)
+  (cond 
+   ( (null (cdr list)) (list (car list)))
+   ( T (append (reverse (cdr list)) (list (car list))))
+   )
+)
+
+(defun fullReverse(list)
+  (cond
+   ( (atom list) list)
+   ( (numberp list) list)
+   (T (myreverse (mapcar 'fullReverse list)))
+   )
+)

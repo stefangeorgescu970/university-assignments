@@ -1,0 +1,27 @@
+;;;; 14. Determine the list of nodes accesed in postorder in a tree of type (1)
+
+(defun parcurgere(list)
+   (parcurgereHelp list nil)
+)
+
+
+;;; parcurgereHelp(t1....tn, rt1....rtm) = 
+;;; nil, n = 0 and m = 0
+;;; parcurgereHelp(rt, nil), n = 0
+;;; t1 U parcurgereHelp(t3...tn, rt), t2 = 0
+;;; parcurgereHelp(t3...tn, t1 U t2 - 1 U rt), t2 = 1
+;;; parcurgereHelp(t3...tn, rt U t1 U t2 - 1), otherwise
+
+(defun parcurgereHelp(list remainingTree)
+   (cond 
+    ( (and (null list) (null remainingTree)) nil )
+    ( (null list)  (parcurgereHelp remainingTree nil) )
+    ( (eq (cadr list) 0 ) (append (list (car list)  ) (parcurgereHelp (cddr list) remainingTree)  ) )
+    ( (eq (cadr list) 1 )  (parcurgereHelp (cddr list)  (append (list (car list)   (- (cadr list) 1) ) remainingTree) ) )
+    ( t (parcurgereHelp (cddr list) (append remainingTree (list (car list) (- (cadr list) 1)))))
+   )
+)
+
+
+;;; run (parcurgere '(A 2 B 0 C 2 D 0 E 0))
+;;; result: (B D E C A)

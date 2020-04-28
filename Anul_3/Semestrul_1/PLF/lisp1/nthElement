@@ -1,0 +1,11 @@
+(defun nthElement(list index pos)
+  (cond
+   ((null list) nil)
+   ((< index pos) (nthElement (cdr list) (+ index 1) pos))
+   (T (car list))
+  )
+)
+
+(defun nthElementWrapper(list pos)
+  (nthElement list 1 pos)
+)

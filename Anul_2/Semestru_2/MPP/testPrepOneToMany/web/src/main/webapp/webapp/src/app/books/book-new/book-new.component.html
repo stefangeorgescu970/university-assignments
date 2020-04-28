@@ -1,0 +1,19 @@
+
+<div>
+  <label>Title: </label>
+  <input #title/>
+</div>
+
+<div>
+  <label>ISBN: </label>
+  <input #isbn/>
+</div>
+
+<div>
+  <label>Year: </label>
+  <input #year/>
+</div>
+
+<div>
+  <button (click)="save(title.value, isbn.value, year.value)">Save</button>
+</div>

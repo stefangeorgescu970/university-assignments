@@ -1,0 +1,3 @@
+populationSize: 40
+iterationNumber: 10000
+mutationProbability: 0.1

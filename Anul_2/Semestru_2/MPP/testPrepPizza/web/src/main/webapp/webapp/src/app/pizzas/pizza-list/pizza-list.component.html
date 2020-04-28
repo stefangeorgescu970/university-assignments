@@ -1,0 +1,7 @@
+<h2>Authors</h2>
+
+<ol class="pizzas">
+  <li *ngFor="let pizza of pizzas" (click)="onSelect(pizza)">
+    {{pizza.name}}
+  </li>
+</ol>

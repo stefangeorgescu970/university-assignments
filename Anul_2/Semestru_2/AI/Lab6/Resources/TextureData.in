@@ -1,0 +1,16 @@
+VerySoftTip:0.2
+VerySoftRight:0.4
+SoftLeft:0.2
+SoftTip:0.4
+SoftRight:0.8
+NormalLeft:0.3
+NormalTip:0.7
+NormalRight:0.9
+ResistantLeft:0.7
+ResistantTip:0.9
+VerySoftType:R
+SoftType:Triangle
+NormalType:Triangle
+ResistantType:L
+Min:0
+Max:1

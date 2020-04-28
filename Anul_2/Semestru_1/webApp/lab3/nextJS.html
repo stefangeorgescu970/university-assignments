@@ -1,0 +1,50 @@
+<html>
+
+	<head>
+	
+		<script type="text/javascript" charset="UTF8" >
+			
+			function firstFunction(){
+			
+				var string = "string hello";
+				var number = 1;
+				var arrayCars = ["Saab", "Volvo"];
+				var myObject = { "firstName" : "Maciek",
+								"lastName" : "Bednarz",
+								"age" : 36};
+								
+				var secondNumber = 2 + 3;
+				var concat = "First" + 1 + 2 + "Second";
+				
+			
+				alert("Before" + concat + arrayCars[1]);
+				
+				console.log("hello, world!");
+				
+				for(i=1;i<5;i++){
+					console.log("Works " + i);
+				}
+				
+				console.log(myObject.firstName);
+				
+				var nullvar = null;
+				try {
+					nullvar.length;
+				} catch (ex) {
+					alert(ex);
+				}
+			}
+			
+		</script>
+		
+	</head>
+
+
+	<body>
+
+		<div align="center" style="position:relative; top:100px;">
+			<input type="button" id="button1" value="Button1" onclick="firstFunction()"> Press me! </input>
+		</div>
+	</body>
+	
+</html>

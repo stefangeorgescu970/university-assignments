@@ -1,0 +1,40 @@
+<html>
+
+	<head>
+	
+		<style type="text/css">
+			
+			.ourclass {
+				background-color : rgb(0,200,0);
+			}
+		
+		</style>
+		
+		<script type="text/javascript" charset="UTF8" >
+			function scan(){
+				
+				var textfield1 = document.getElementById("text1");
+				if(textfield1 != null) {
+					textfield1.value = "Value changed";
+					textfield1.style = "background-color : rgb(0,200,0);";
+				}
+			}
+
+		</script>
+		
+	</head>
+
+
+	<body>
+
+		<div align="center" style="position:relative; top:100px;">
+			<input type="button" id="button1" value="Button1" onclick="scan()"> Press me! </input>
+		</div>
+		
+		<input type="text" value="text1" id="text1"/>
+		<input type="text" value="text2" id="text2"/>
+		<input type="text" value="text3" id="text3"/>
+		
+	</body>
+	
+</html>

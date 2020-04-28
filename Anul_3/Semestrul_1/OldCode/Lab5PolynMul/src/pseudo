@@ -1,0 +1,36 @@
+function mul(a, b)
+    polynomial result := new polynomial();
+    result.setSize(a.size() + b.size() - 1);
+    for k := 0, result.size() do
+        int sum := 0;
+        int begin;
+        if k < b.size() then
+            begin := 0;
+        else
+            begin := k - b.size() + 1
+        endif
+        int end := min(a.size(), k + 1)
+        for i := begin, end do
+            sum := sum + a.getPosition(i) * b.getPosition(k - i)
+        endfor
+        result.setPosition(k, sum)
+    endfor
+    return result
+endfunction
+
+function karatsubaMul(a, b)
+    if a.size() < 2 or b.size() < 2 then
+        return mul(a, b);
+    else
+        halfPoint := (max, a.size(), b.size()) div 2;
+        lowA := copyRange(a, 0, halfPoint);
+        highA := copyRange(a, halfPoint, a.size());
+        lowB := copyRange(b, 0, halfPoint);
+        highB := copyRange(b, halfPoint, b.size());
+        p := karatsubaMul(lowA, lowB);
+        q := karatsubaMul((lowA + highA), (lowB + highB));
+        r := karatsubaMul(highA, highB);
+        return shift(r, 2 * halfPoint) + shift(q - r - p, halfPoint) + p
+endfunction
+
+2469 1412 1243 1170 1226 8648 8094 7641 7345 7504

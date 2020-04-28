@@ -1,0 +1,214 @@
+<html>
+	<head>
+		
+		<meta charset="utf-8"/>
+		
+		<style type="text/css">
+		
+			.classStyle {
+				color:blue;
+			}
+		
+		</style>
+		
+	
+		<script type="text/javascript" >
+			
+			
+			function handleAddButton() {
+					var newButton = document.createElement("input");
+					newButton.type = "button";
+					newButton.value = "New Button";
+					newButton.id = "new1";
+					
+					var div1 = document.getElementById("div1");
+					div1.appendChild(newButton);
+					
+				}
+				
+				function handleDeleteButton(){
+					
+					var addedButton = document.getElementById("new1");
+					addedButton.parentElement.removeChild(addedButton);
+					
+				}
+					
+				
+				function handleChangeStyleButton(){
+					var addedButton = document.getElementById("new1");
+					addedButton.style = "color:red";
+				
+				
+				}				
+				
+				
+				function handleChangeClassStyleButton(){
+					var addedButton = document.getElementById("new1");
+					addedButton.classList.add("classStyle");
+					addedButton.style = "";
+					
+				}
+				
+				function handleSendEventButton(){
+					var addButton = document.getElementById("addButton");
+					var event = new Event("click");
+					addButton.dispatchEvent(event);
+				}
+				
+				function handleTriggerEventButton(){
+					var addButton = document.getElementById("addButton");
+					addButton.click();
+				}
+				
+				
+				function handleMoveButton(){
+					
+					setTimeout(
+						function() {
+							var button = document.getElementById("toMove");
+							var div1 = document.getElementById("div1");
+							var div2 = document.getElementById("div2");
+							var div3 = document.getElementById("div3");
+							
+							var parent = button.parentElement;
+							
+							switch(parent) {
+								case div1: 
+									div1.removeChild(button);
+									div2.appendChild(button);
+									break;
+								case div2:
+									div2.removeChild(button);
+									div3.appendChild(button);
+									break;
+								case div3:
+									div3.removeChild(button);
+									div1.appendChild(button);
+									break;
+								default:
+									alert("Error");
+							}
+					
+						}, 1000);
+				}
+			
+			function start(){
+				
+				
+				
+				var bodies = document.getElementsByTagName('body');
+				
+				if(bodies.length > 0) {
+					var body = bodies[0];
+					
+					var div1 = document.createElement('div');
+					div1.id="div1";
+					div1.style = "height:50px;background-color:blue;";
+					
+					var div2 = document.createElement('div');
+					div2.id="div2";
+					div2.style = "height:50px;background-color:red;";
+					
+					var div3 = document.createElement('div');
+					div3.id = "div3";
+					div3.style = "height:50px;background-color:green;";
+					
+					body.appendChild(div1);
+					body.appendChild(div2);
+					body.appendChild(div3);
+					
+					var addButton = document.createElement("input");
+					addButton.type = "button";
+					addButton.id= "addButton"
+					addButton.value = "Add new Object";
+					addButton.onclick = handleAddButton;
+					
+					body.append(addButton);
+					
+					var deleteButton = document.createElement("input");
+					deleteButton.type = "button";
+					deleteButton.value = "Delete Object";
+					deleteButton.onclick = handleDeleteButton;
+					
+					body.append(deleteButton); 
+					
+					var changeStyleButton = document.createElement("input");
+					changeStyleButton.type = "button";
+					changeStyleButton.value = "Change Style";
+					changeStyleButton.onclick = handleChangeStyleButton;
+					
+					body.append(changeStyleButton); 
+					
+					var changeClassStyleButton = document.createElement("input");
+					changeClassStyleButton.type = "button";
+					changeClassStyleButton.value = "Change Class Style";
+					changeClassStyleButton.onclick = handleChangeClassStyleButton;
+					
+					body.append(changeClassStyleButton); 
+					
+					
+					
+					var sendEventButton = document.createElement("input");
+					sendEventButton.type = "button";
+					sendEventButton.value = "Send Event";
+					sendEventButton.onclick = handleSendEventButton;
+					
+					body.append(sendEventButton); 
+					
+					var triggerEventButton = document.createElement("input");
+					triggerEventButton.type = "button";
+					triggerEventButton.value = "Trigger Event";
+					triggerEventButton.onclick = handleTriggerEventButton;
+					
+					body.append(triggerEventButton); 
+					
+					var addTodDiv2Button = document.createElement("input");
+					addTodDiv2Button.type = "button";
+					addTodDiv2Button.value = "Move Me!";
+					addTodDiv2Button.id = "toMove";
+					addTodDiv2Button.onclick = handleMoveButton;
+					
+					div1.append(addTodDiv2Button); 
+					
+					var br = document.createElement("br");
+					
+					body.append(br);
+					body.append(br);
+
+					var canvas = document.createElement("canvas");
+					canvas.width = "200"; 
+					canvas.height = "100";
+					canvas.style = "border:1px solid #000000;"
+					var ctx = canvas.getContext("2d");
+					ctx.beginPath();
+					ctx.arc(95,50,40,0,2*Math.PI);
+					ctx.stroke();
+					body.appendChild(canvas);
+					
+				}
+				
+			}
+			
+
+		
+		</script>
+		
+		
+				
+		
+	</head>
+
+	
+	<body id="body", onload="start();">
+		<p>
+		Only thing you can do is write something in js file
+		How to have control on your page
+		How to catch events from page in js
+		how to draw a square and a circle
+		create canvas
+		
+		</p>
+		
+	</body>
+	
+</html>

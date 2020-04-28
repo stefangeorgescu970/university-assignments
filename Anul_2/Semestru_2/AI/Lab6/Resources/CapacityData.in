@@ -1,0 +1,12 @@
+SmallType:R
+MediumType:Triangle
+HighType:L
+SmallTip:1
+SmallRight:2
+MediumLeft:1
+MediumTip:2.5
+MediumRight:4
+HighLeft:3
+HighTip:4
+Min:0
+Max:5

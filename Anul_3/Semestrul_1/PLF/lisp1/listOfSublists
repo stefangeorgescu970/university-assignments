@@ -1,0 +1,15 @@
+(defun listOfSublists(list)
+  (cond
+   ( (null list) nil )
+   ( (listp list) (cons list (parseSublist list)))
+  )
+)
+
+
+(defun parseSublist(list)
+  (cond
+   ( (null list) nil )
+   ( (listp (car list))  (append (cons (car list) (parseSublist (car list))) (parseSublist (cdr list))))
+   (T  (parseSublist (cdr list)) )
+  )
+)

@@ -1,0 +1,12 @@
+<app-authors-list></app-authors-list>
+
+<h3>Add Author</h3>
+<div>
+  <label>Name: </label>
+  <input #name/>
+</div>
+
+<div>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save(name.value)">Save</button>
+</div>

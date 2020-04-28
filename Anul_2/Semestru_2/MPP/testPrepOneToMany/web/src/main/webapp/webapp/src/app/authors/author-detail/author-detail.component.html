@@ -1,0 +1,12 @@
+<div *ngIf="author">
+  <h2>Author {{author.name}} details:</h2>
+
+  <h3>Add a new book for this author</h3>
+
+  <app-book-new></app-book-new>
+
+  <app-books-list></app-books-list>
+
+  <button (click)="goBack()">Back</button>
+
+</div>

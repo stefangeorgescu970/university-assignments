@@ -1,0 +1,28 @@
+<h1>{{title}}</h1>
+
+
+<h3>Add Pizza</h3>
+
+<div>
+  <label>Name: </label>
+  <input #name/>
+</div>
+<div>
+  <label>Description: </label>
+  <input #description>
+</div>
+<div>
+  <label>Price : </label>
+  <input #price>
+</div>
+
+<div>
+  <select [(ngModel)] = "selectedCuisine">
+    <option *ngFor="let cuisine of cuisines" [value] = "cuisine">{{cuisine}}</option>
+  </select>
+
+</div>
+
+<div>
+  <button (click)="save(name.value, description.value, price.value)">Save</button>
+</div>

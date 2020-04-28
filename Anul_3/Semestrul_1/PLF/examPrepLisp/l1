@@ -1,0 +1,78 @@
+(defun depth(list current)
+  (cond
+   ( (null list) current)
+   ( (listp (car list)) (depth (car list) ( + current 1)))
+   (T (depth (cdr list) current))
+   )
+)
+
+(defun listToAtomList(list)
+  (cond
+   ( (null list) nil)
+   ( (listp (car list)) (append (listToAtomList (car list))  (listToAtomList (cdr list)) ))
+   ( T (cons  (car list)  (listToAtomList (cdr list))))
+)
+)
+
+(defun myreverse(list)
+  (cond 
+   ( (null (cdr list)) (list (car list)))
+   ( T (append (reverse (cdr list)) (list (car list))))
+   )
+)
+
+(defun insert(list elem)
+  (cond 
+   ( (null list) (list elem))
+   ( (> elem (car list)) (cons (car list) (insert (cdr list) elem)) )
+   ( T (cons elem list))
+  )
+)
+
+(defun invertSeq(list currentSeq)
+  (cond
+   ( (null list) (myreverse currentSeq) )
+   ( (listp (car list)) (cons  (cons (myreverse currentSeq) (invertSeq (car list) nil))  (invertSeq (cdr list) nil)  ) )
+   ( T (invertSeq (cdr list) (append currentSeq (list (car list)))))
+  )
+)
+
+(defun lastElem(list)
+  (cond
+   ( (null (cdr list)) (car list))
+   ( T (lastElem (cdr list)))
+   )
+)
+
+(defun replaceSublists(list)
+  (cond
+   ( (null list) nil)
+   ( (listp (car list)) (cons (lastElem (car list)) (replaceSublists (cdr list))))
+   ( T (cons (car list) (replaceSublists (cdr list))))
+   )
+)
+
+
+(defun applyOp(op n m)
+  (cond
+   ( (eq op '*) (* n m))
+   ( (eq op '+) ( + n m ))
+   ( (eq op '-) (- n m))
+   ( (eq op '/) (/ n m))
+   )
+)
+
+(defun computeStep(list)
+  (cond
+   ( (null list) nil)
+   ( (and (eq (numberp (car list)) nil)  (and (numberp (cadr list)) (numberp (caddr list))))  (cons (applyOp (car list) (cadr list) (caddr list)) (computeStep (cdddr list))))
+   ( T (cons (car list) (computeStep (cdr list))))
+  )
+)
+
+(defun compute(list)
+  (cond
+   ( (null (cdr list)) (car list))
+   ( T (compute (computeStep list)))
+   )
+)

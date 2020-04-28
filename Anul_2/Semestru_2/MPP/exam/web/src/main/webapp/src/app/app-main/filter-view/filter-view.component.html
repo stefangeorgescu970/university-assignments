@@ -1,0 +1,23 @@
+<h2>Books List</h2>
+
+<div>
+  <label>Author: </label>
+  <select [(ngModel)] = "selectedAuthor" (change)="onChangeAuthor($event)">
+    <option [value]="-1">no author selected</option>
+    <option *ngFor="let author of authors" [value] = "author.id">{{author.name}}</option>
+  </select>
+</div>
+
+<div>
+  <label>Year: </label>
+  <select [(ngModel)] = "selectedYear" (change)="onChangeYear($event)">
+    <option [value]="-1">no year selected</option>
+    <option *ngFor="let year of yearValues" [value] = "year">{{year}}</option>
+  </select>
+</div>
+
+<ol class="books">
+  <li *ngFor="let book of books">
+    {{book.ssn}} {{book.name}} {{book.contact}} {{book.title}} {{book.year}}
+  </li>
+</ol>

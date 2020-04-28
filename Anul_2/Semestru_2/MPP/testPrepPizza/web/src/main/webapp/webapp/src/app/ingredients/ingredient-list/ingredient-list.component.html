@@ -1,0 +1,9 @@
+<h2>Books</h2>
+<ol class="ingredients">
+  <li *ngFor="let ingredient of ingredients ">
+    {{ingredient.title}}
+    <button class="delete"
+            (click)="delete(ingredient); $event.stopPropagation()">x
+    </button>
+  </li>
+</ol>

@@ -1,0 +1,123 @@
+;;;; 1.
+;;;; a) Write a function to return the n-th element of a list, or NIL if such an element does not exist.
+;;;; b) Write a function to check whether an atom E is a member of a list which is not necessarily linear.
+;;;; c) Write a function to determine the list of all sublists of a given list, on any level.
+;;;; A sublist is either the list itself, or any element that is a list, at any level. Example:
+;;;; (1 2 (3 (4 5) (6 7)) 8 (9 10)) => 5 sublists :
+;;;; ( (1 2 (3 (4 5) (6 7)) 8 (9 10)) (3 (4 5) (6 7)) (4 5) (6 7) (9 10) )
+;;;; d) Write a function to transform a linear list into a set.
+
+
+;;; point a)
+
+;; nthElement(l1...ln, index, pos) = 
+;; nil, n = 0
+;; nthElement(l2...ln, index + 1, pos), index < pos
+;; l1, index = pos
+
+;; test cases
+;;  (nthElementWrapper '(1 2 3 4) 2)
+;; result: 2
+
+;; (nthElementWrapper '(1 2 3 4) 6)
+;; NIL
+
+(defun nthElement(list index pos)
+  (cond
+   ((null list) nil)
+   ((< index pos) (nthElement (cdr list) (+ index 1) pos))
+   (T (car list))
+  )
+)
+
+(defun nthElementWrapper(list pos)
+  (nthElement list 1 pos)
+)
+
+
+;;; point b)
+
+;; listHasAtom(l1...ln, atomP) = 
+;; nil, n = 0
+;; true, l1 is atom and l1 == atomP
+;; listHasAtom(l2...ln, atomP), otherwise
+
+;; test cases
+;; (listHasAtom '(1 2 3 e 4 5) 'e)
+;; T
+
+;; (listHasAtom '(1 2 3 e 4 5) 'c)
+;; NIL
+
+(defun listHasAtom(list atom)
+  (cond 
+   ((null list) nil)
+   ((and (atom (car list)) (eq atom (car list))) t )
+   (T (listHasAtom (cdr list) atom))
+  )
+)
+
+;;; point c)
+
+;; listOfSublists(l1...ln) = 
+;; nil, n = 0
+;; l1...ln U parseSublist(l1....ln), otherwise
+
+;; test cases
+;; (listOfSublists '(1 2 (3 (4 5) (6 7)) 8 (9 10)))
+;; ((1 2 (3 (4 5) (6 7)) 8 (9 10)) (3 (4 5) (6 7)) (4 5) (6 7) (9 10))
+
+
+(defun listOfSublists(list)
+  (cond
+   ( (null list) nil )
+   ( (listp list) (cons list (parseSublist list)))
+  )
+)
+
+
+;; parseSublist(l1...ln) = 
+;; nil, n = 0
+;; (l1 U parseSublist(l1) U parseSublist(l2...ln), l1 is list
+;; parseSublist(l2...ln), otehrwise
+
+(defun parseSublist(list)
+  (cond
+   ( (null list) nil )
+   ( (listp (car list))  (append (cons (car list) (parseSublist (car list))) (parseSublist (cdr list))))
+   (T  (parseSublist (cdr list)) )
+  )
+)
+
+;;; point d)
+
+;; elementInList(l1....ln, elem) = 
+;; nil, n = 0
+;; true, l1 == elem
+;; elementInList(l2...ln, elem), otherwise
+
+;; test cases
+
+;; (linearListToSet '(1 2 3 3 4 1 2 3))
+;; (4 1 2 3)
+
+(defun elementInList(list elem)
+  (cond
+   ((null list) nil)
+   ( (eq (car list) elem) T )
+   (T (elementInList (cdr list) elem))
+  )
+)
+
+;; linearListToSet(l1....ln) = 
+;; nil, n = 0
+;; linearListToSet(l2...ln), l1 is in l2....ln
+;; l1 U linearListToSet(l2...ln), l1 is not in l2...ln
+
+(defun linearListToSet(list)
+  (cond
+   ((null list) nil)
+   ( (elementInList (cdr list) (car list)) (linearListToSet (cdr list) ) )
+   (T (cons (car list) (linearListToSet (cdr list))))
+  )
+)

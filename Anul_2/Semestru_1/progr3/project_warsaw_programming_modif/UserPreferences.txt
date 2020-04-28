@@ -1,0 +1,2 @@
+Directory1:H:\Windows7\Documents\programming3\project\Resources1
+Directory2:H:\Windows7\Documents\programming3\project\Resources2

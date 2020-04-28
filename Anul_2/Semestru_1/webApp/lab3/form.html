@@ -1,0 +1,72 @@
+<html>
+
+	<head>
+	
+		
+		<script type="text/javascript" charset="UTF8" >
+			function scan(){
+				
+				var isValid = true;
+				
+				var nameBox = document.getElementById("name")
+				var lastNameBox = document.getElementById("lastName");
+				var ageBox = document.getElementById("age");
+				
+				var name = nameBox.value;
+				var lastName = lastNameBox.value;
+				var age = ageBox.value;
+				
+				if(name.length < 1 || name.length > 10){
+					isValid = false;
+				}
+		
+				
+				if(name.length < 1 || name.length > 10){
+					isValid = false;
+				}
+						
+				if(name == lastName) {
+					isValid = false;
+				}
+
+				ageNum = parseInt(age);
+				if(age < 18 || age > 30) {
+					isValid = false;
+				}
+
+				alert("End: " + isValid);
+				return isValid;
+			}
+
+		</script>
+		
+	</head>
+
+
+	<body>
+
+		<div align="left" style="position:relative; top:100px;">
+			<form action = "http://www.google.com", action=POST, onsubmit="return scan();">
+			
+				<label> Name:  </label>
+				<input type = "text" id = "name" /> 
+				<br>
+				
+				<label> Last Name: </label>
+				<input type = "text" id = "lastName" /> 
+				<br>
+				
+				<label> Age: </label>
+				<input type = "text" id = "age" /> 
+				<br>
+				
+				<input type= "submit" value ="Submit"/> 
+			
+			</form>
+		</div>
+		
+		
+		
+	</body>
+	
+</html>

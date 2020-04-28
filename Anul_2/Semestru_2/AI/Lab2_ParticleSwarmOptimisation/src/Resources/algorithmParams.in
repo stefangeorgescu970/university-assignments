@@ -1,0 +1,5 @@
+numbersOfParticles: 40
+iterationNumber: 100
+inertiaCoefficient: 0.6
+cognitiveLearningCoefficient: 2
+socialLearningCoefficient: 2

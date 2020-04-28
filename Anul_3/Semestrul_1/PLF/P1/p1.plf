@@ -1,0 +1,61 @@
+%
+% 13.
+% a. Transform a list in a set, in the order of the last occurrences of elements. Eg.: [1,2,3,1,2] is transformed in [3,1,2].
+% b. Define a predicate to determine the greatest common divisor of all numbers in a list.
+
+% Point a.
+
+% Model matematic
+% listToSet(list) =
+% [], n = 0
+% listToSet(l2,…,ln), if l1 is in l2,…,ln
+% l1 U listToSet(l2,…,ln), otherwise
+
+% myMember(X: Int, L: list).
+% myMember(i,i).
+% Determines if X is in L
+
+myMember(X, [X|_]).
+myMember(X, [_|T]) :- myMember(X, T).
+
+
+% myAppend(L1: list, L2: list, R: list)
+% myAppend(i,i,o).
+% Put the contents of L2 after the contents of L1 and store them in R
+
+myAppend([],R,R).
+myAppend([H|T],L2,[H|R]) :-myAppend(T,L2,R).
+
+
+% listToSet(L: list, REZ: list)
+% listToSet(i, o).
+% Turn a list into a set, items ordered by their last appearances
+
+listToSet([],[]).
+listToSet([H|T],REZ) :-
+myMember(H,T),
+listToSet(T,REZ).
+listToSet([H|T],REZ) :-
+listToSet(T, REZ_T),
+myAppend([H], REZ_T, REZ).
+
+
+% Point b.
+
+% gcd(e1: integer, e2: integer, r: integer)
+% gcd(i,i,o)
+% Find the greatest common divisor of two elements.
+
+gcd(0,0,0).
+gcd(E1, 0, E1).
+gcd(0, E2, E2).
+gcd(E1, E2, R):- E1 > E2, E3 is E1 - E2, gcd(E3, E2, R).
+gcd(E1, E2, R):- E2 > E1, E3 is E2 - E1, gcd(E1, E3, R).
+gcd(E1, E2, R):- E1 =:= E2, R is E1.
+
+
+% gcdList(L: list, R: integer)
+% gcdList(i,o)
+% Find the Greatest Common Divisor of the elements of a list.
+gcdList([], 0).
+gcdList([H | T], R) :- gcdList(T, RT), gcd(H, RT, REZ), R is REZ.

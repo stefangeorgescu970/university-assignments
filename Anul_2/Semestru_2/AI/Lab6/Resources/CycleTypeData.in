@@ -1,0 +1,16 @@
+DelicateTip:0.2
+DelicateRight:0.4
+EasyLeft:0.2
+EasyTip:0.5
+EasyRight:0.8
+NormalLeft:0.3
+NormalTip:0.6
+NormalRight:0.9
+IntenseLeft:0.7
+IntenseTip:0.9
+DelicateType:R
+EasyType:Triangle
+NormalType:Triangle
+IntenseType:L
+Min:0
+Max:1

@@ -1,0 +1,15 @@
+(defun elementInList(list elem)
+  (cond
+   ((null list) nil)
+   ( (eq (car list) elem) T )
+   (T (elementInList (cdr list) elem))
+  )
+)
+
+(defun linearListToSet(list)
+  (cond
+   ((null list) nil)
+   ( (elementInList (cdr list) (car list)) (linearListToSet (cdr list) ) )
+   (T (cons (car list) (linearListToSet (cdr list))))
+  )
+)

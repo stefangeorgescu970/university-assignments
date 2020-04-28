@@ -1,0 +1,131 @@
+body {
+	background-color:#C0C0C0;
+}
+
+div.header{
+	background-color:white;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:50px;
+	z-index:100;
+}
+
+font.header{
+	position:absolute;
+	margin-left:10px;
+	margin-bottom:10px;
+	font-size:40px;
+}
+
+font.header-right{
+	position:absolute;
+	color:#FFA500;
+	margin-bottom:5px;
+	font-size:40px;
+	right:70px;
+	text-transform:uppercase;
+	
+}
+
+img.header{
+	opacity:0.2;
+	width:40px;
+	height:40px;
+	top:5px;
+	position:absolute;
+	right:10px;
+}
+
+img.header:hover{
+	opacity: 1.0;
+}
+
+div.content-row{
+	position:static;
+	width:100%;
+	display:table-row;
+	float:top;
+}
+
+div.card-small{
+	position:relative;
+	width:30%;
+	display:table-cell;
+	background-color:white;
+	border-color:black;
+	border-style:solid;
+	border-width:1px;
+	border-radius:3px;
+	float:left;
+	margin: 10px 10px 10px 10px;
+}
+			
+
+div.card-title{
+	position:relative;
+	text-transform:uppercase;
+	size:40px;
+	margin-top:5px;
+	margin-left:5px;
+}
+
+div.card-content{
+	position:relative;
+	size:30px;
+	margin-top:10px;
+	margin-left:5px;
+}
+
+div.card-big{
+	position:relative;
+	width:62%;
+	display:table-cell;
+	background-color:white;
+	border-color:black;
+	border-style:solid;
+	border-width:1px;
+	border-radius:3px;
+	float:left;
+	margin: 10px 10px 10px 10px;
+}
+
+
+@media (max-width: 801px) {
+		div.card-small{
+			width:100%;
+			float:top;
+        }
+		
+		div.card-big{
+			width:100%;
+			float:top;
+		}
+
+@media (max-width: 401px) {
+		div.card-small{
+	position:relative;
+	width:100%;
+	display:table-cell;
+	background-color:#C0C0C0;
+	border-color:black;
+	border-style:solid;
+	border-width:0px;
+	border-radius:0px;
+	float:top;
+	margin: 10px 10px 10px 10px;
+        }
+		
+		div.card-big{
+	position:relative;
+	width:100%;
+	display:table-cell;
+	background-color:#C0C0C0;
+	border-color:black;
+	border-style:solid;
+	border-width:0px;
+	border-radius:0px;
+	float:top;
+	margin: 10px 10px 10px 10px;
+}

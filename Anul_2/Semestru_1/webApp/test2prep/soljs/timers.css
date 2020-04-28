@@ -1,0 +1,9 @@
+div.timer {
+    border: solid thick green;
+    margin: 2em;
+    width: 30em;
+}
+
+div.timer.expired {
+    border: solid thick red;
+}
